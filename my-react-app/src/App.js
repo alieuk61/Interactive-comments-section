@@ -1,10 +1,10 @@
 import logo from './logo.svg';
-import './App.css';
-import commentsSection from './main-page';
+import './index.css';
+import CommentsSection from './main-page';
 
 function App() {
   return (
-    <commentsSection/>
+    <CommentsSection/>
   );
 }
 
