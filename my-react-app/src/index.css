@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.main{
+/* .main{
     justify-content: center;
-    flex-direction: column; /*allows everything to be in a column without me even needing to put them in div wrappers*/
-}
+    flex-direction: column; allows everything to be in a column without me even needing to put them in div wrappers
+} */
