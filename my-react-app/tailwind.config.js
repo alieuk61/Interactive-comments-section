@@ -15,7 +15,13 @@ module.exports = {
         'Light-gray': '#EAECF1',
         'Very-light-gray': '#F5F6FA',
         'White': '#FFFFFF'
-      }
+      }, 
+      padding:{
+        '25px' : '25px'
+      },
+      fontFamily: {
+        'Rubik': 'Rubik, sans-serif'
+      },
     },
   },
   plugins: [],
