@@ -8,20 +8,30 @@ import juliusPic from './images/avatars/image-juliusomo.png'
 
 
 function CommentsSection(){
-    // ATTENTION: NEED TO REMOVE EVERYTHING EXCEPT THE COMMENT, SETCOMMENT USE STATE THING, AS WE NEED TO USE MAPPING TO CREATE COMMEMTS INSTEAD
+    // ADDED THINGS TO THE JSON FILE, NOW ALL WE NEED TO DO IS WORK OUT WHY ITS NOT CREATING DIVS FOR THE NEW DATA
+    //AFTER THAT WE CAN WORK ON THE REPLIES TASK
+    //THEN WE CAN WORK ON THE UPDATE PART OF CRUD, (IM GUESSING WE ALTER THE CONTENT ON THE DATA IN JSON FILE)
+    //THEN WE CAN FINISH STIYLING 
+    //AFTER ALL OF THIS, WE'RE DONE!! IF WE WANT WE CAN INTRODUCE NEW ANIMATION STUFF
 
+    const [jsonData, SetJsonData] = useState(data.comments)
     const [comment, setComment] = useState('')
     const [list, addToList] = useState([])
+    // const [score, setScore] = useState(0)
 
     function saveData (){
         const newComment = {
-            "id": data.comments[-1].id+1,
+            "id": data.comments[data.comments.length - 1].id+1,
             "content": comment,
             "createdAt": 'working on this...',
             "score": 0,
-            "user": `${data.currentUser}`,
+            "user": data.currentUser,
             "replies": []
     }
+
+    SetJsonData([...jsonData, newComment])
+
+    console.log(jsonData)
 
     setComment('')
     }
@@ -29,11 +39,18 @@ function CommentsSection(){
     function Comment(props) {
         return (
             <div className='comments-wrapper w-fit h-fit mb-5'>
-                <div className='comments w-[735px] h-[162px] bg-White rounded-lg flex flex-row float-right box-border p-25px'>
+                <div id={props.id} className='comments w-[735px] h-[162px] bg-White rounded-lg flex flex-row float-right box-border p-25px space-x-4'>
                     <section className='likes'>
                         <div className='bg-Very-light-gray w-[44px] h-[90px] rounded-lg grid justify-center items-center'>
                             <button className='dislike-btn w-[20px] h-[20px]'>
-                                <img src={plus} alt="plus-image" className='' />
+                                <img 
+                                src={plus} 
+                                alt="plus-image" 
+                                className=''
+                                onClick={() => {
+                                    
+                                }}
+                                />
                             </button>
                             <span className='text-Moderate-blue font-bold'>{props.score}</span>
                             <img src={minus} alt="subtract-image" />
@@ -57,23 +74,39 @@ function CommentsSection(){
                         </textarea>
                     </section>
                 </div>
+                {props.replies.map((reply, index) => {
+                    {console.log(reply)}
+                    // <div key={index} className='reply-wrapper pt-[20px] pl-[35px] h-[144px] w-full bg-slate-500'>
+                    //     <div className='reply-comment-container'>
+                    //         <div className='reply'>
+                    //             <h1>{reply.content}</h1>
+                    //             <h1>{reply.replyingTo}</h1>
+                    //         </div>
+                    //     </div>
+                    // </div>
+
+                    
+                })}
             </div>
         );
     }
     
     return(
-        <section className="main w-full h-screen flex items-center flex-col bg-Very-light-gray box-border p-10 font-Rubik text-Grayish-blue">
+        <section className="main w-full h-full flex items-center flex-col bg-Very-light-gray box-border p-10 font-Rubik text-Grayish-blue">
             
-            {data.comments.map((comments, index) => (
+            {jsonData.map((comments, index) => (
                 <Comment 
+                key={index}
+                id={index+1}
                 image={comments.user.image.png}
                 score={comments.score}
                 username={comments.user.username}
                 createdAt={comments.createdAt}
                 content={comments.content}
+                replies={comments.replies}
                 />
                 
-            
+
             )
             )}
 
