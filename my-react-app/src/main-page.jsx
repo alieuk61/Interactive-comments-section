@@ -38,8 +38,8 @@ function CommentsSection(){
 
     function Comment(props) {
         return (
-            <div className='comments-wrapper w-fit h-fit mb-5'>
-                <div id={props.id} className='comments w-[735px] h-[162px] bg-White rounded-lg flex flex-row float-right box-border p-25px space-x-4'>
+            <div className='comments-wrapper w-[735px] h-[162px] mb-5'>
+                <div id={props.id} className='comments w-full h-fit bg-White rounded-lg flex flex-row float-right box-border p-25px space-x-4'>
                     <section className='likes'>
                         <div className='bg-Very-light-gray w-[44px] h-[90px] rounded-lg grid justify-center items-center'>
                             <button className='dislike-btn w-[20px] h-[20px]'>
@@ -74,19 +74,20 @@ function CommentsSection(){
                         </textarea>
                     </section>
                 </div>
+                <div>
                 {props.replies.map((reply, index) => {
-                    {console.log(reply)}
-                    // <div key={index} className='reply-wrapper pt-[20px] pl-[35px] h-[144px] w-full bg-slate-500'>
-                    //     <div className='reply-comment-container'>
-                    //         <div className='reply'>
-                    //             <h1>{reply.content}</h1>
-                    //             <h1>{reply.replyingTo}</h1>
-                    //         </div>
-                    //     </div>
-                    // </div>
-
-                    
+                    {console.log(reply, reply.content)}
+                    return(
+                        <div key={index} className='reply-wrapper pt-[20px] pl-[35px] h-[162px] w-full bg-slate-500'>
+                                <div className='reply-comment-container'>
+                                    <div className='reply'>
+                                        <p>{reply.content}</p>
+                                    </div>
+                                </div>
+                            </div>
+                    )
                 })}
+                </div>
             </div>
         );
     }
