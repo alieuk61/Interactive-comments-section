@@ -38,7 +38,7 @@ function CommentsSection(){
 
     function Comment(props) {
         return (
-            <div className='comments-wrapper w-[735px] h-[162px] mb-5'>
+            <div className='comments-wrapper w-[735px] h-[162px] mb-5 flex flex-col'>
                 <div id={props.id} className='comments w-full h-fit bg-White rounded-lg flex flex-row float-right box-border p-25px space-x-4'>
                     <section className='likes'>
                         <div className='bg-Very-light-gray w-[44px] h-[90px] rounded-lg grid justify-center items-center'>
@@ -74,7 +74,7 @@ function CommentsSection(){
                         </textarea>
                     </section>
                 </div>
-                <div>
+                <div className='flex flex-col'>
                 {props.replies.map((reply, index) => {
                     {console.log(reply, reply.content)}
                     return(
@@ -111,7 +111,6 @@ function CommentsSection(){
             )
             )}
 
-            
             <section className='main-input w-[735px] h-[162px] flex justify-evenly bg-White rounded-lg p-5'>
                 <img src={juliusPic} alt="User-profile-picture" className='w-[36px] h-[36px]' />
                 <textarea 
